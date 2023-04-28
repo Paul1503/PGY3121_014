@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title><a href="Api post"></a></title>
+    <script>
+        $(document).ready(function(){
+
+            $("#enviar").focusin(function(){
+                $.get("https://jsonplaceholder.typicode.com/posts",function(data){
+
+                    $.each(data,function(i, item){
+                        $("#mostrar").append("<tr><td>"+ item.userId +"</td><td>"+ item.id +
+                            "</td><td>"+ item.title +
+                            "</td><td>" + item.body+ "</td></tr>");
+                    })
+
+                });
+
+            })
+
+        });
+    </script>
+
+    
+</head>
+<body>
+    <div class="container" over>
+        <input type="button" id="enviar" value="Mostrar" class="btn btn-success"><br>
+
+        <table class="table table-responsive"  id="mostrar">
+            <thead>
+                <tr>                
+                    <th>User id</th>     
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Cuerpazo</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
